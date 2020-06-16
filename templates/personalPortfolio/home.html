@@ -1,0 +1,35 @@
+{% extends 'personalPortfolio/base.html' %}
+
+{% block content %}
+    {% load static %}
+    <br>
+    <div class="row justify-content-center my-3">
+        <div class = "col-md-9 text-center">
+            <h1 class="font-weight-bold">Sherlock's Personal Tech Portfolio and Blog</h1>
+        </div>
+    </div>
+        <div class="row justify-content-center my-3">
+            <img src="{% static 'portfolio/portfolioImage.png' %}">
+
+        </div>
+
+    <h2 class =" text-center mt-5"> Portfolio</h2>
+    <hr>
+    <div class="row">
+    {% for project in projects %}
+        <div class = "col-lg-4 col-md-6">
+        <h1>{{ project.title }}</h1>
+        <img src="{{ project.image.url }}" class = "img-fluid mb-2">
+        <h2>{{ project.description }}</h2>
+        {% if project.url %}
+            <br>
+            <a href="{{ project.url }}">Link</a>
+
+        {% endif %}
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}
+
+
